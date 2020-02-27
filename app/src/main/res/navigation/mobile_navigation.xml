@@ -3,29 +3,99 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/Plapp">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.plappandroid.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/navigation_discover"
-        android:name="com.example.plappandroid.ui.discover.DiscoverFragment"
-        android:label="@string/title_discover"
-        tools:layout="@layout/discover_fragment" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.plappandroid.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.plappandroid.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/profile_fragment" />
+    <navigation
+        android:id="@+id/Auth"
+        app:startDestination="@id/login" >
+        <fragment
+            android:id="@+id/login"
+            android:name="com.example.plappandroid.ui.auth.Login"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/action_login_to_register"
+                app:destination="@id/register" />
+        </fragment>
+        <fragment
+            android:id="@+id/register"
+            android:name="com.example.plappandroid.ui.auth.Register"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register">
+            <action
+                android:id="@+id/action_register_to_login"
+                app:destination="@id/login" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_navigation_home"
+            app:destination="@id/Plapp" />
+    </navigation>
+    <navigation
+        android:id="@+id/Plapp"
+        app:startDestination="@id/navigation_greenhouse" >
+        <fragment
+            android:id="@+id/navigation_greenhouse"
+            android:name="com.example.plappandroid.ui.home.HomeFragment"
+            android:label="@string/title_home"
+            tools:layout="@layout/fragment_home">
+            <action
+                android:id="@+id/action_navigation_home_to_plant"
+                app:destination="@id/addPlant"
+                app:enterAnim="@android:anim/fade_in" />
+            <action
+                android:id="@+id/action_navigation_home_to_managePlantFragment"
+                app:destination="@id/managePlantFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/navigation_discover"
+            android:name="com.example.plappandroid.ui.discover.DiscoverFragment"
+            android:label="@string/title_discover"
+            tools:layout="@layout/discover_fragment" >
+            <action
+                android:id="@+id/action_navigation_discover_to_viewImageFragment"
+                app:destination="@id/viewImageFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/navigation_notifications"
+            android:name="com.example.plappandroid.ui.notifications.NotificationsFragment"
+            android:label="@string/title_notifications"
+            tools:layout="@layout/fragment_notifications" />
+        <fragment
+            android:id="@+id/navigation_profile"
+            android:name="com.example.plappandroid.ui.profile.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/profile_fragment" />
+        <fragment
+            android:id="@+id/addPlant"
+            android:name="com.example.plappandroid.ui.home.addPlant.AddPlantFragment"
+            android:label="plant_fragment"
+            tools:layout="@layout/add_plant_fragment" />
+        <fragment
+            android:id="@+id/managePlantFragment"
+            android:name="com.example.plappandroid.ui.home.mangeplant.ManagePlantFragment"
+            android:label="manage_plant_fragment"
+            tools:layout="@layout/manage_plant_fragment" >
+            <action
+                android:id="@+id/action_managePlantFragment_to_addStoryboardFragment"
+                app:destination="@id/addStoryboardFragment" />
+            <action
+                android:id="@+id/action_managePlantFragment_to_addScheduleFragment"
+                app:destination="@id/addScheduleFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/viewImageFragment"
+            android:name="com.example.plappandroid.ui.discover.viewImage.ViewImageFragment"
+            android:label="view_image_fragment"
+            tools:layout="@layout/view_image_fragment" />
+        <fragment
+            android:id="@+id/addStoryboardFragment"
+            android:name="com.example.plappandroid.ui.home.addStoryboard.AddStoryboardFragment"
+            android:label="add_storyboard_fragment"
+            tools:layout="@layout/add_storyboard_fragment" />
+        <fragment
+            android:id="@+id/addScheduleFragment"
+            android:name="com.example.plappandroid.ui.home.addSchedule.AddScheduleFragment"
+            android:label="add_schedule_fragment"
+            tools:layout="@layout/add_schedule_fragment" />
+    </navigation>
 </navigation>
