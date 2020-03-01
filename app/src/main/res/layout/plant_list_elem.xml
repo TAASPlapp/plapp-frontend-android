@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/plantName"
-                android:text="The Title of a Blog"
+                android:text="@string/list_item_title"
                 android:textColor="#000"
                 android:textSize="19sp"
                 />
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/plantDescription"
-                android:text="Mitch Tabian"
+                android:text="@string/list_item_description"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
                 />

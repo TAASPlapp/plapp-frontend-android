@@ -3,11 +3,20 @@ package com.example.plappandroid.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.plappandroid.data.repository.PlantRepository
+import com.example.plappandroid.internal.lazyDeferred
 
-class HomeViewModel : ViewModel() {
+class  HomeViewModel(
+    private val plantRepository: PlantRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    val plants  by lazyDeferred {
+        plantRepository.getPlants()
     }
-    val text: LiveData<String> = _text
+
+
+
+
+
 }

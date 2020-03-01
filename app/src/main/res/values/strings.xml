@@ -11,5 +11,8 @@
     <string name="button_add_plant">Add Plant</string>
     <string name="plant">Plant</string>
     <string name="managePlant">Manage</string>
+    <string name="loading">Loading</string>
+    <string name="list_item_title">List item Title</string>
+    <string name="list_item_description">List Item description</string>
 
 </resources>
