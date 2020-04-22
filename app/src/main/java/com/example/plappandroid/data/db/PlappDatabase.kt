@@ -5,14 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.plappandroid.data.db.entity.HealthStatus
+import com.example.plappandroid.data.db.dao.PlantDAO
 import com.example.plappandroid.data.db.entity.Plant
 
 
 //todo: add all others entity
 @Database(
     entities = [Plant::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 @TypeConverters(StatusConverter::class)

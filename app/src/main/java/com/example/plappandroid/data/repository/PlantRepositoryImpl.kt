@@ -1,7 +1,7 @@
 package com.example.plappandroid.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.plappandroid.data.db.PlantDAO
+import com.example.plappandroid.data.db.dao.PlantDAO
 import com.example.plappandroid.data.db.entity.Plant
 import com.example.plappandroid.network.response.PlantsGatewayResponse
 import com.example.plappandroid.network.service.GreenhouseNetworkDataService
@@ -32,6 +32,14 @@ class PlantRepositoryImpl(
         }
     }
 
+    override suspend fun getPlant(plantId: Long): LiveData<out Plant> {
+        return  withContext(Dispatchers.IO){
+            initPlantsData()
+            return@withContext plantDAO.getPlant(plantId)
+        }
+    }
+
+
     private suspend fun initPlantsData() {
         //todo: mod when we add plant  -> now is always true
         if (isFetchNeeded(ZonedDateTime.now().minusHours(1))) {
@@ -40,9 +48,6 @@ class PlantRepositoryImpl(
 
     }
 
-    override suspend fun getPlant(plantId: Long): LiveData<Plant> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
     private fun persistFetchedPlants(fetchedPlants: PlantsGatewayResponse) {

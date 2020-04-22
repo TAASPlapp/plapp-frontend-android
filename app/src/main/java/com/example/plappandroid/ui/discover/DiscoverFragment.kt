@@ -1,6 +1,5 @@
 package com.example.plappandroid.ui.discover
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

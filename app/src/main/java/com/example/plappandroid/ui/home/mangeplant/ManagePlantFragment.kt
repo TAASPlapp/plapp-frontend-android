@@ -1,20 +1,24 @@
 package com.example.plappandroid.ui.home.mangeplant
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 
 import com.example.plappandroid.R
+import com.example.plappandroid.internal.ArgNotFoundException
+import com.example.plappandroid.ui.base.ScopedFragment
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.factory
+import org.kodein.di.generic.instance
 
-class ManagePlantFragment : Fragment() {
+class ManagePlantFragment : ScopedFragment(), KodeinAware {
+    override val kodein by closestKodein()
+    private val managePlantViewmodelInstanceFactory: ((Long) -> ManagePlantViewmodelFactory ) by factory()
 
-    companion object {
-        fun newInstance() = ManagePlantFragment()
-    }
+
 
     private lateinit var viewModel: ManagePlantViewModel
 
@@ -27,8 +31,15 @@ class ManagePlantFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ManagePlantViewModel::class.java)
-        // TODO: Use the ViewModel
+        val safeArgs = arguments?.let {ManagePlantFragmentArgs.fromBundle(it)}
+        val plantId = safeArgs?.plantId ?: throw ArgNotFoundException()
+        viewModel = ViewModelProvider(this, managePlantViewmodelInstanceFactory(plantId)).get(ManagePlantViewModel::class.java)
+
+        bindUI()
+    }
+
+    fun bindUI(){
+
     }
 
 }

@@ -14,13 +14,14 @@
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="99dp"
-            android:layout_marginTop="289dp"
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/plant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.432" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

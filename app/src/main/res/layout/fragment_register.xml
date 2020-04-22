@@ -1,14 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.Register">
+    android:orientation="vertical"
+    android:padding="40dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
+        android:layout_width="313dp"
+        android:layout_height="83dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logoplapp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logo" />
+
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/username"
+        android:hint="@string/username"
+        android:layout_marginTop="100dp"
+        android:textColor="@android:color/black"
+        android:paddingStart="0dp"
+        android:drawablePadding="5dp"
+        android:textColorHint="#999"/>
 
-</FrameLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password"
+        android:hint="@string/password"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/black"
+        android:paddingLeft="0dp"
+        android:drawablePadding="5dp"
+        android:textColorHint="#999"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/register"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:onClick="checkLogin"/>
+
+    <TextView
+        android:id="@+id/registerToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="@string/already_have_an_account_sign_in"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

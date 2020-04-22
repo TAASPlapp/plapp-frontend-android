@@ -6,6 +6,6 @@ import com.example.plappandroid.data.db.entity.Plant
 interface PlantRepository {
     //suspend let us call this function from a subroutine
     suspend fun getPlants(): LiveData<out List<Plant>>
-    suspend fun getPlant(plantId : Long): LiveData<Plant>
+    suspend fun getPlant(plantId : Long): LiveData<out Plant>
 
 }

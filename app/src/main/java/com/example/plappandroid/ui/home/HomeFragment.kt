@@ -70,20 +70,27 @@ class HomeFragment : ScopedFragment(), KodeinAware {
 
 
     private fun initRecyclerView(items: List<ListItemPlant>) {
+        // adapter from groupie library
         val groupAdapter = GroupAdapter<ViewHolder>().apply {
             addAll(items)
         }
         recyclerViewPlants.apply {
-            layoutManager = LinearLayoutManager(this@HomeFragment.context)
             adapter = groupAdapter
+            layoutManager = LinearLayoutManager(this@HomeFragment.context)
             addItemDecoration(TopSpacingItemDecoration(30))
         }
+
+
         groupAdapter.setOnItemClickListener { item, view ->
-            Toast.makeText(this@HomeFragment.context, "clicked", Toast.LENGTH_SHORT).show()
+            //            Toast.makeText(this@HomeFragment.context, item.toString(), Toast.LENGTH_SHORT).show()
+            (item as? ListItemPlant)?.let {
+                val action = HomeFragmentDirections.actionNavigationHomeToManagePlantFragment(it.plant.plantId)
+                Navigation.findNavController(view).navigate(action)
+
+            }
         }
-
-
     }
+
 
 
 }

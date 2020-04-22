@@ -3,4 +3,5 @@
     <color name="colorPrimary">#13855C</color>
     <color name="colorPrimaryDark">#858796</color>
     <color name="colorAccent">#e74a3b</color>
+    <color name="cardBack">#b7c7f2</color>
 </resources>

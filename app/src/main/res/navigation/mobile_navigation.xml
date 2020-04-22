@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/Plapp">
+    app:startDestination="@id/Plapp">
 
     <navigation
         android:id="@+id/Auth"
@@ -73,14 +73,17 @@
         <fragment
             android:id="@+id/managePlantFragment"
             android:name="com.example.plappandroid.ui.home.mangeplant.ManagePlantFragment"
-            android:label="manage_plant_fragment"
-            tools:layout="@layout/manage_plant_fragment" >
+            android:label="Manage Plant"
+            tools:layout="@layout/manage_plant_fragment">
             <action
                 android:id="@+id/action_managePlantFragment_to_addStoryboardFragment"
                 app:destination="@id/addStoryboardFragment" />
             <action
                 android:id="@+id/action_managePlantFragment_to_addScheduleFragment"
                 app:destination="@id/addScheduleFragment" />
+            <argument
+                android:name="plantId"
+                app:argType="long" />
         </fragment>
         <fragment
             android:id="@+id/viewImageFragment"
