@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 
@@ -28,9 +29,11 @@ interface ApiGatewayService {
     @GET("auth/signup")
     fun sigup(cred: Credentials): AuthGatewayResponse
 
+    @GET("api/notifications/register")
+    fun registerFirebaseToken(firebaseToken: String): AuthGatewayResponse
 
     companion object {
-        private const val plappServerUrl: String = "http://192.168.1.166:4001/api/";
+        private const val plappServerUrl: String = "https://plapp-api-gateway.herokuapp.com/api/";
 
         operator fun invoke(
             //injection
@@ -54,7 +57,7 @@ interface ApiGatewayService {
                 .addInterceptor(connectivityInterceptor)
                 .addInterceptor { chain ->
                     val newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer 9ee43e16-16db-4cb0-a31d-978f34ceec61")
+                        .addHeader("Authorization", "Bearer d19a0ca0-3142-4345-9f1d-68383d53a3d4")
                         .build()
                     chain.proceed(newRequest)
                 }

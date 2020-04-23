@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.plappandroid.internal.NoConnectivityException
 import com.example.plappandroid.network.ApiGatewayService
-import com.example.plappandroid.network.response.AuthGatewayResponse
 import com.example.plappandroid.network.response.PlantsGatewayResponse
 
 class GreenhouseNetworkDataServiceImpl(

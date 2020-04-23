@@ -12,7 +12,6 @@ import com.example.plappandroid.ui.base.ScopedFragment
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.factory
-import org.kodein.di.generic.instance
 
 class ManagePlantFragment : ScopedFragment(), KodeinAware {
     override val kodein by closestKodein()

@@ -1,7 +1,5 @@
 package com.example.plappandroid.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.plappandroid.data.repository.PlantRepository
 import com.example.plappandroid.internal.lazyDeferred
