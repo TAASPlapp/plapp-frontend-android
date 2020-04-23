@@ -1,5 +1,6 @@
 package com.example.plappandroid.firebase
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -43,11 +44,11 @@ class MyFirebaseMessagingService(): FirebaseMessagingService() {
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
         remoteMessage.notification?.let {
-            sendNotification("${it.body}");
+            sendNotification(it);
         }
     }
 
-    private fun sendNotification(messageBody: String) {
+    private fun sendNotification(message: RemoteMessage.Notification) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -55,8 +56,8 @@ class MyFirebaseMessagingService(): FirebaseMessagingService() {
 
         val notificationBuilder = NotificationCompat.Builder(this, "Channel")
             .setSmallIcon(R.drawable.notification_icon_background)
-            .setContentTitle("Notification")
-            .setContentText(messageBody)
+            .setContentTitle(message.title.toString())
+            .setContentText(message.body.toString())
             .setContentIntent(pendingIntent)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
