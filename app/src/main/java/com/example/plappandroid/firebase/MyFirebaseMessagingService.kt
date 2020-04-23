@@ -14,7 +14,7 @@ import com.example.plappandroid.ui.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-class MyFirebaseMessagingService: FirebaseMessagingService() {
+class MyFirebaseMessagingService(): FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         Log.d("MyFirebaseMessagingService", "Refreshed token: $token")
@@ -22,7 +22,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
-        apiGatewayService.registerFirebaseToken(token)
+        //apiGatewayService.registerFirebaseToken(token)
         Log.d("MyFirebaseMessagingService", "Sent token to api gateway")
         //sendRegistrationToServer(token)
     }

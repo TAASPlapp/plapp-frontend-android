@@ -29,8 +29,8 @@ interface ApiGatewayService {
     @GET("auth/signup")
     fun sigup(cred: Credentials): AuthGatewayResponse
 
-    @GET("api/notifications/register")
-    fun registerFirebaseToken(firebaseToken: String): AuthGatewayResponse
+    @GET("notifications/register")
+    fun registerFirebaseToken(@Query("firebaseToken") firebaseToken: String): Deferred<PlantsGatewayResponse>
 
     companion object {
         private const val plappServerUrl: String = "https://plapp-api-gateway.herokuapp.com/api/";
